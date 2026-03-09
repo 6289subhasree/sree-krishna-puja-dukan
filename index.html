@@ -192,6 +192,60 @@
   @keyframes fadeUp { from{opacity:0;transform:translateY(22px);} to{opacity:1;transform:translateY(0);} }
   .reveal { opacity:0; transform:translateY(28px); transition:opacity 0.75s ease, transform 0.75s ease; }
   .reveal.visible { opacity:1; transform:translateY(0); }
+
+  /* HAMBURGER MENU */
+  .hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; padding:4px; background:none; border:none; }
+  .hamburger span { display:block; width:24px; height:2px; background:var(--saffron); transition:all 0.3s; }
+
+  .mobile-menu { display:none; position:fixed; inset:0; background:rgba(251,245,236,0.98); z-index:200; flex-direction:column; align-items:center; justify-content:center; gap:32px; }
+  .mobile-menu.open { display:flex; }
+  .mobile-menu a { font-family:'Cinzel',serif; font-size:18px; letter-spacing:0.2em; color:var(--text); text-decoration:none; text-transform:uppercase; transition:color 0.2s; }
+  .mobile-menu a:hover { color:var(--saffron); }
+  .mobile-menu-close { position:absolute; top:24px; right:24px; font-size:28px; cursor:pointer; color:var(--text-muted); background:none; border:none; }
+  .mobile-wa { display:flex; align-items:center; gap:8px; background:#25D366; color:white; font-family:'Cinzel',serif; font-size:13px; letter-spacing:0.15em; padding:14px 28px; border-radius:2px; text-decoration:none; }
+
+  /* MOBILE */
+  @media (max-width: 768px) {
+    nav { padding:0 20px; }
+    .nav-links { display:none; }
+    .nav-right { display:none; }
+    .hamburger { display:flex; }
+
+    .topbar { font-size:8px; letter-spacing:0.12em; padding:8px 12px; }
+
+    .hero { grid-template-columns:1fr; min-height:auto; padding:60px 24px 48px; gap:36px; }
+    .hero-visual { order:-1; }
+    .hero-visual-main { aspect-ratio:4/3; }
+    .hero-badge { display:none; }
+    .hero-title { font-size:clamp(34px,10vw,52px); }
+    .hero-actions { flex-direction:column; align-items:stretch; }
+    .hero-actions a { text-align:center; }
+
+    .sec { padding:60px 24px; }
+    .product-grid { grid-template-columns:1fr; gap:16px; }
+
+    .gopal-section { padding:60px 24px; }
+    .gopal-grid { grid-template-columns:1fr 1fr; gap:12px; }
+
+    .heritage { grid-template-columns:1fr; padding:60px 24px; gap:36px; }
+    .heritage-divider { display:none; }
+
+    .steps-grid { grid-template-columns:1fr 1fr; gap:36px; }
+    .steps-grid::before { display:none; }
+
+    .wa-cta { margin:0 24px 60px; grid-template-columns:1fr; padding:36px 24px; text-align:center; }
+    .wa-btn { justify-content:center; }
+
+    footer { padding:48px 24px 32px; }
+    .footer-top { grid-template-columns:1fr 1fr; gap:28px; }
+    .footer-bottom { flex-direction:column; gap:10px; text-align:center; }
+  }
+
+  @media (max-width: 480px) {
+    .gopal-grid { grid-template-columns:1fr; }
+    .steps-grid { grid-template-columns:1fr; }
+    .footer-top { grid-template-columns:1fr; }
+  }
 </style>
 </head>
 <body>
@@ -213,7 +267,18 @@
     <a href="https://wa.me/917980528095" class="nav-whatsapp" target="_blank">💬 WhatsApp</a>
     <a href="#order" class="nav-order">Order Now</a>
   </div>
+  <button class="hamburger" onclick="document.getElementById('mobileMenu').classList.add('open')">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-menu-close" onclick="document.getElementById('mobileMenu').classList.remove('open')">✕</button>
+  <a href="#samagri" onclick="document.getElementById('mobileMenu').classList.remove('open')">Samagri</a>
+  <a href="#gopal" onclick="document.getElementById('mobileMenu').classList.remove('open')">Gopal Collection</a>
+  <a href="#order" onclick="document.getElementById('mobileMenu').classList.remove('open')">How to Order</a>
+  <a href="#heritage" onclick="document.getElementById('mobileMenu').classList.remove('open')">About Us</a>
+  <a href="https://wa.me/917980528095" class="mobile-wa" target="_blank">💬 WhatsApp Us</a>
+</div>
 
 <!-- HERO -->
 <section class="hero">
