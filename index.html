@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sree Krishna Puja Dukan · Paul & Co Heritage</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;500;600&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:        #FBF5EC;
+    --bg-2:      #F4EAD8;
+    --bg-3:      #EDE0C6;
+    --bg-4:      #E4D3B2;
+    --text:      #2E1F08;
+    --text-mid:  #5A3E1B;
+    --text-muted:#8A6A3A;
+    --saffron:   #D4660A;
+    --saffron-2: #E8821A;
+    --gold:      #B5870C;
+    --gold-2:    #CFA020;
+    --border:    rgba(181,135,12,0.18);
+    --border-strong: rgba(181,135,12,0.35);
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Raleway', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  body::after {
+    content:'';
+    position:fixed; inset:0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events:none;
+    z-index:999;
+  }
+
+  .topbar {
+    background: var(--saffron);
+    color: #FBF5EC;
+    text-align: center;
+    padding: 9px 20px;
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+  }
+
+  nav {
+    position: sticky;
+    top: 0; z-index: 100;
+    background: rgba(251,245,236,0.96);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 72px;
+  }
+
+  .nav-brand-main {
+    font-family: 'Cinzel', serif;
+    font-size: 14px;
+    letter-spacing: 0.12em;
+    color: var(--saffron);
+  }
+
+  .nav-brand-sub {
+    font-size: 9px;
+    letter-spacing: 0.3em;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    margin-top: 3px;
+  }
+
+  .nav-links { display:flex; gap:36px; list-style:none; }
+
+  .nav-links a {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    color: var(--text-mid);
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--saffron); }
+
+  .nav-right { display:flex; gap:12px; align-items:center; }
+
+  .nav-whatsapp {
+    display:flex; align-items:center; gap:7px;
+    background: #25D366; color: white;
+    font-family: 'Cinzel', serif;
+    font-size: 10px; letter-spacing: 0.15em;
+    padding: 9px 18px;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: opacity 0.2s;
+  }
+  .nav-whatsapp:hover { opacity: 0.88; }
+
+  .nav-order {
+    font-family: 'Cinzel', serif;
+    font-size: 10px; letter-spacing: 0.15em;
+    color: #FBF5EC; background: var(--saffron);
+    padding: 9px 20px;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: background 0.2s;
+  }
+  .nav-order:hover { background: var(--saffron-2); }
+
+  /* HERO */
+  .hero {
+    min-height: 90vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 80px 60px 60px;
+    gap: 60px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content:'';
+    position:absolute; right:-80px; top:-80px;
+    width:500px; height:500px; border-radius:50%;
+    background: radial-gradient(circle, rgba(212,102,10,0.05) 0%, transparent 70%);
+    pointer-events:none;
+  }
+
+  .hero-tag {
+    display: inline-flex; align-items:center; gap:10px;
+    background: rgba(212,102,10,0.08);
+    border: 1px solid var(--border-strong);
+    padding: 7px 16px;
+    margin-bottom: 28px;
+    width: fit-content;
+  }
+
+  .hero-tag-dot { width:6px; height:6px; border-radius:50%; background:var(--saffron); }
+
+  .hero-tag span {
+    font-family: 'Cinzel', serif;
+    font-size: 9px; letter-spacing: 0.35em;
+    color: var(--saffron); text-transform:uppercase;
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(44px, 5.5vw, 80px);
+    font-weight: 300;
+    line-height: 1.02;
+    color: var(--text);
+    margin-bottom: 10px;
+    opacity: 0;
+    animation: fadeUp 0.9s ease 0.2s forwards;
+  }
+
+  .hero-title em { font-style:italic; color:var(--saffron); }
+
+  .hero-subtitle {
+    font-family: 'Cinzel', serif;
+    font-size: 11px; letter-spacing: 0.28em;
+    color: var(--gold); text-transform:uppercase;
+    margin-bottom: 28px;
+    opacity:0; animation: fadeUp 0.9s ease 0.35s forwards;
+  }
+
+  .hero-desc {
+    font-size: 15px; line-height: 1.95;
+    color: var(--text-muted);
+    max-width: 460px; margin-bottom: 44px;
+    opacity:0; animation: fadeUp 0.9s ease 0.5s forwards;
+  }
+
+  .hero-desc strong { color: var(--text-mid); font-weight:500; }
+
+  .hero-actions {
+    display:flex; gap:16px; align-items:center; flex-wrap:wrap;
+    opacity:0; animation: fadeUp 0.9s ease 0.65s forwards;
+  }
+
+  .btn-saffron {
+    font-family: 'Cinzel', serif;
+    font-size: 11px; letter-spacing: 0.2em; text-transform:uppercase;
+    color: #FBF5EC; background: var(--saffron);
+    padding: 15px 36px; text-decoration:none;
+    border-radius: 2px; transition: background 0.25s;
+  }
+  .btn-saffron:hover { background: var(--saffron-2); }
+
+  .btn-outline {
+    font-family: 'Cinzel', serif;
+    font-size: 11px; letter-spacing: 0.2em; text-transform:uppercase;
+    color: var(--saffron);
+    border: 1px solid var(--border-strong);
+    padding: 14px 32px; text-decoration:none;
+    border-radius: 2px; transition: all 0.25s;
+  }
+  .btn-outline:hover { background:rgba(212,102,10,0.06); border-color:var(--saffron); }
+
+  .hero-visual {
+    opacity:0; animation: fadeUp 1s ease 0.4s forwards;
+    position:relative;
+  }
+
+  .hero-visual-main {
+    background: var(--bg-2);
+    border: 1px solid var(--border);
+    aspect-ratio: 3/4;
+    display:flex; flex-direction:column;
+    align-items:center; justify-content:center;
+    position:relative; overflow:hidden;
+  }
+
+  .hero-visual-main::before {
+    content:'';
+    position:absolute; inset:0;
+    background: radial-gradient(ellipse at 50% 30%, rgba(212,102,10,0.07) 0%, transparent 65%);
+  }
+
+  .hero-diya {
+    font-size:100px;
+    filter: drop-shadow(0 8px 32px rgba(212,102,10,0.25));
+    animation: float 4s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%,100% { transform:translateY(0); }
+    50% { transform:translateY(-12px); }
+  }
+
+  .hero-visual-label {
+    position:absolute; bottom:24px; left:50%; transform:translateX(-50%);
+    font-family:'Cinzel',serif; font-size:10px; letter-spacing:0.3em;
+    color:var(--text-muted); text-transform:uppercase; white-space:nowrap;
+  }
+
+  .hero-badge {
+    position:absolute; top:20px; right:-20px;
+    background: var(--saffron); color:#FBF5EC;
+    padding: 16px 20px;
+    font-family:'Cinzel',serif; font-size:10px; letter-spacing:0.1em;
+    text-align:center; line-height:1.6;
+    box-shadow: 0 4px 24px rgba(212,102,10,0.25);
+  }
+  .hero-badge strong { display:block; font-size:18px; letter-spacing:0; }
+
+  /* MARQUEE */
+  .marquee-wrap {
+    overflow:hidden;
+    border-top:1px solid var(--border);
+    border-bottom:1px solid var(--border);
+    background:var(--bg-2); padding:14px 0;
+  }
+  .marquee-track {
+    display:flex; gap:56px;
+    animation: marquee 28s linear infinite;
+    white-space:nowrap;
+  }
+  .marquee-item {
+    font-family:'Cinzel',serif; font-size:10px;
+    letter-spacing:0.38em; color:var(--text-muted);
+    text-transform:uppercase;
+    display:flex; align-items:center; gap:18px; flex-shrink:0;
+  }
+  .m-dot { width:4px; height:4px; border-radius:50%; background:var(--saffron); opacity:0.6; }
+  @keyframes marquee { to { transform:translateX(-50%); } }
+
+  /* SECTIONS */
+  .sec { padding:100px 60px; }
+
+  .sec-label {
+    font-family:'Cinzel',serif; font-size:9px;
+    letter-spacing:0.5em; color:var(--saffron);
+    text-transform:uppercase; margin-bottom:16px;
+    display:flex; align-items:center; gap:14px;
+  }
+  .sec-label::before { content:''; width:32px; height:1px; background:var(--saffron); opacity:0.5; }
+
+  .sec-title {
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(34px,4vw,58px); font-weight:300;
+    line-height:1.1; color:var(--text); margin-bottom:56px;
+  }
+  .sec-title em { font-style:italic; color:var(--saffron); }
+
+  /* SAMAGRI GRID */
+  .samagri-grid {
+    display:grid; grid-template-columns:repeat(3,1fr);
+    gap:1px; background:var(--border);
+    border:1px solid var(--border);
+  }
+
+  .samagri-card {
+    background:var(--bg); padding:44px 36px;
+    position:relative; overflow:hidden;
+    transition:background 0.35s; cursor:pointer;
+  }
+  .samagri-card::after {
+    content:''; position:absolute;
+    bottom:0; left:0; right:0; height:3px;
+    background:linear-gradient(to right, var(--saffron), var(--gold-2));
+    transform:scaleX(0); transition:transform 0.35s; transform-origin:left;
+  }
+  .samagri-card:hover { background:var(--bg-2); }
+  .samagri-card:hover::after { transform:scaleX(1); }
+  .samagri-card:hover .sc-icon { transform:scale(1.1) rotate(-4deg); }
+
+  .sc-icon { font-size:36px; margin-bottom:20px; display:block; transition:transform 0.3s; }
+  .sc-name { font-family:'Cormorant Garamond',serif; font-size:23px; font-weight:400; color:var(--text); margin-bottom:10px; }
+  .sc-desc { font-size:13px; line-height:1.85; color:var(--text-muted); }
+  .sc-order {
+    display:inline-block; margin-top:24px;
+    font-family:'Cinzel',serif; font-size:9px;
+    letter-spacing:0.3em; color:var(--saffron); text-transform:uppercase;
+    border-bottom:1px solid var(--border-strong); padding-bottom:3px;
+    text-decoration:none; transition:color 0.2s;
+  }
+  .sc-order:hover { color:var(--saffron-2); }
+
+  /* HERITAGE */
+  .heritage {
+    background:var(--bg-3);
+    border-top:1px solid var(--border);
+    border-bottom:1px solid var(--border);
+    padding:80px 60px;
+    display:grid; grid-template-columns:1fr 2px 1fr;
+    gap:60px; align-items:center;
+  }
+  .heritage-divider { background:var(--border-strong); align-self:stretch; }
+  .heritage-eyebrow {
+    font-family:'Cormorant Garamond',serif;
+    font-size:13px; letter-spacing:0.2em;
+    text-transform:uppercase; color:var(--saffron); margin-bottom:12px;
+  }
+  .heritage-name {
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(30px,3.5vw,50px); font-weight:300;
+    color:var(--text); line-height:1.1; margin-bottom:20px;
+  }
+  .heritage-desc { font-size:14px; line-height:1.9; color:var(--text-muted); }
+
+  /* GOPAL */
+  .gopal-section { padding:100px 60px; background:var(--bg-2); }
+
+  .gopal-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:20px; }
+
+  .gopal-card {
+    background:var(--bg); border:1px solid var(--border);
+    overflow:hidden; transition:all 0.3s; cursor:pointer;
+  }
+  .gopal-card:hover { box-shadow:0 8px 40px rgba(181,135,12,0.12); transform:translateY(-4px); }
+
+  .gopal-img {
+    aspect-ratio:3/4; background:var(--bg-3);
+    display:flex; align-items:center; justify-content:center;
+    font-size:60px; position:relative; overflow:hidden;
+  }
+  .gopal-img::before {
+    content:''; position:absolute; inset:0;
+    background: radial-gradient(ellipse at 50% 30%, rgba(212,102,10,0.06) 0%, transparent 65%);
+  }
+  .gopal-info { padding:20px; }
+  .gopal-name { font-family:'Cormorant Garamond',serif; font-size:18px; color:var(--text); margin-bottom:4px; }
+  .gopal-sub { font-size:11px; color:var(--text-muted); letter-spacing:0.05em; margin-bottom:14px; }
+  .gopal-btn {
+    display:block; text-align:center;
+    font-family:'Cinzel',serif; font-size:9px; letter-spacing:0.25em;
+    color:var(--saffron); border:1px solid var(--border-strong);
+    padding:9px; text-decoration:none; text-transform:uppercase;
+    transition:all 0.2s;
+  }
+  .gopal-btn:hover { background:var(--saffron); color:#FBF5EC; border-color:var(--saffron); }
+
+  /* HOW TO ORDER */
+  .steps-grid {
+    display:grid; grid-template-columns:repeat(4,1fr);
+    gap:0; position:relative;
+  }
+  .steps-grid::before {
+    content:''; position:absolute;
+    top:36px; left:10%; right:10%; height:1px;
+    background:linear-gradient(to right, transparent, var(--border-strong), transparent);
+  }
+  .step { padding:0 28px; text-align:center; }
+  .step-num {
+    width:72px; height:72px; border-radius:50%;
+    background:var(--bg); border:1px solid var(--border-strong);
+    display:flex; align-items:center; justify-content:center;
+    margin:0 auto 28px;
+    font-family:'Cormorant Garamond',serif; font-size:26px; color:var(--saffron);
+    position:relative; z-index:1;
+  }
+  .step-title { font-family:'Cormorant Garamond',serif; font-size:20px; color:var(--text); margin-bottom:10px; }
+  .step-desc { font-size:13px; line-height:1.8; color:var(--text-muted); }
+
+  /* WA CTA */
+  .wa-cta {
+    margin:0 60px 100px;
+    background:var(--bg-2); border:1px solid var(--border);
+    padding:60px;
+    display:grid; grid-template-columns:1fr auto;
+    align-items:center; gap:40px;
+    position:relative; overflow:hidden;
+  }
+  .wa-cta::before {
+    content:'📿'; position:absolute;
+    right:220px; top:50%; transform:translateY(-50%);
+    font-size:80px; opacity:0.05;
+  }
+  .wa-title {
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(26px,3vw,42px); font-weight:300;
+    color:var(--text); margin-bottom:10px;
+  }
+  .wa-title em { font-style:italic; color:var(--saffron); }
+  .wa-desc { font-size:14px; color:var(--text-muted); line-height:1.8; }
+  .wa-btn {
+    display:flex; align-items:center; gap:10px;
+    background:#25D366; color:white;
+    font-family:'Cinzel',serif; font-size:11px; letter-spacing:0.2em;
+    padding:18px 32px; text-decoration:none;
+    white-space:nowrap; border-radius:2px;
+    transition:opacity 0.2s; flex-shrink:0;
+  }
+  .wa-btn:hover { opacity:0.88; }
+
+  /* FOOTER */
+  footer { background:var(--bg-3); border-top:1px solid var(--border); padding:64px 60px 40px; }
+  .footer-top {
+    display:grid; grid-template-columns:2fr 1fr 1fr 1fr;
+    gap:60px; margin-bottom:48px; padding-bottom:48px;
+    border-bottom:1px solid var(--border);
+  }
+  .footer-brand-name { font-family:'Cinzel',serif; font-size:15px; color:var(--saffron); letter-spacing:0.1em; margin-bottom:6px; }
+  .footer-brand-heritage { font-family:'Cormorant Garamond',serif; font-size:13px; color:var(--text-muted); font-style:italic; margin-bottom:18px; }
+  .footer-tagline { font-size:13px; color:var(--text-muted); line-height:1.9; max-width:280px; }
+  .footer-col h4 { font-family:'Cinzel',serif; font-size:9px; letter-spacing:0.4em; color:var(--gold); text-transform:uppercase; margin-bottom:20px; }
+  .footer-col ul { list-style:none; }
+  .footer-col li { font-size:13px; color:var(--text-muted); margin-bottom:11px; cursor:pointer; transition:color 0.2s; }
+  .footer-col li:hover { color:var(--saffron); }
+  .footer-bottom { display:flex; justify-content:space-between; align-items:center; }
+  .footer-bottom p { font-size:11px; color:var(--text-muted); letter-spacing:0.05em; }
+  .footer-om { font-family:'Cormorant Garamond',serif; font-size:28px; color:var(--saffron); opacity:0.35; }
+
+  @keyframes fadeUp {
+    from { opacity:0; transform:translateY(22px); }
+    to   { opacity:1; transform:translateY(0); }
+  }
+
+  .reveal { opacity:0; transform:translateY(28px); transition:opacity 0.75s ease, transform 0.75s ease; }
+  .reveal.visible { opacity:1; transform:translateY(0); }
+</style>
+</head>
+<body>
+
+<div class="topbar">ॐ नमो भगवते वासुदेवाय &nbsp;·&nbsp; Free delivery on orders above ₹499 &nbsp;·&nbsp; WhatsApp orders welcome</div>
+
+<nav>
+  <div>
+    <div class="nav-brand-main">Sree Krishna Puja Dukan</div>
+    <div class="nav-brand-sub">Paul &amp; Co · Heritage Shop</div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#samagri">Samagri</a></li>
+    <li><a href="#gopal">Gopal Collection</a></li>
+    <li><a href="#order">How to Order</a></li>
+    <li><a href="#heritage">About Us</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="https://wa.me/917980528095" class="nav-whatsapp" target="_blank">💬 WhatsApp</a>
+    <a href="#order" class="nav-order">Order Now</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div>
+    <div class="hero-tag">
+      <span class="hero-tag-dot"></span>
+      <span>Now delivering to your doorstep</span>
+    </div>
+    <h1 class="hero-title">Sacred <em>Puja Samagri</em>,<br>Delivered with<br>Devotion</h1>
+    <p class="hero-subtitle">Sree Krishna Puja Dukan · Paul &amp; Co</p>
+    <p class="hero-desc">
+      Your trusted source for <strong>pure puja essentials</strong> — diyas, incense, complete puja kits, til tel, camphor, idols, and the beloved <strong>Sree Krishna Collections</strong> for Gopal. A heritage shop, now at your fingertips.
+    </p>
+    <div class="hero-actions">
+      <a href="#samagri" class="btn-saffron">Shop Samagri</a>
+      <a href="https://wa.me/917980528095" class="btn-outline" target="_blank">💬 Order via WhatsApp</a>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="hero-visual-main">
+      <div class="hero-diya">🪔</div>
+      <div class="hero-visual-label">Pure · Authentic · Devotional</div>
+    </div>
+    <div class="hero-badge">
+      <strong>Paul & Co</strong>
+      Heritage<br>Shop
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <div class="marquee-item"><span class="m-dot"></span>Puja Samagri</div>
+    <div class="marquee-item"><span class="m-dot"></span>Diyas &amp; Lamps</div>
+    <div class="marquee-item"><span class="m-dot"></span>Til Tel &amp; Camphor</div>
+    <div class="marquee-item"><span class="m-dot"></span>Complete Puja Kits</div>
+    <div class="marquee-item"><span class="m-dot"></span>Idols &amp; Murtis</div>
+    <div class="marquee-item"><span class="m-dot"></span>Gopal Dress Collection</div>
+    <div class="marquee-item"><span class="m-dot"></span>Puja Books &amp; Calendars</div>
+    <div class="marquee-item"><span class="m-dot"></span>Incense &amp; Agarbatti</div>
+    <div class="marquee-item"><span class="m-dot"></span>Puja Samagri</div>
+    <div class="marquee-item"><span class="m-dot"></span>Diyas &amp; Lamps</div>
+    <div class="marquee-item"><span class="m-dot"></span>Til Tel &amp; Camphor</div>
+    <div class="marquee-item"><span class="m-dot"></span>Complete Puja Kits</div>
+    <div class="marquee-item"><span class="m-dot"></span>Idols &amp; Murtis</div>
+    <div class="marquee-item"><span class="m-dot"></span>Gopal Dress Collection</div>
+    <div class="marquee-item"><span class="m-dot"></span>Puja Books &amp; Calendars</div>
+    <div class="marquee-item"><span class="m-dot"></span>Incense &amp; Agarbatti</div>
+  </div>
+</div>
+
+<!-- SAMAGRI -->
+<section class="sec" id="samagri">
+  <div class="sec-label">Puja Samagri</div>
+  <h2 class="sec-title">Everything for your <em>Sacred Ritual</em></h2>
+  <div class="samagri-grid reveal">
+    <div class="samagri-card">
+      <span class="sc-icon">🪔</span>
+      <div class="sc-name">Diyas &amp; Lamps</div>
+      <p class="sc-desc">Handcrafted clay diyas, brass deepams, cotton wicks, and ghee lamps for your daily aarti and special occasions.</p>
+      <a href="https://wa.me/917980528095?text=Hi! I'd like to order Diyas and Lamps" class="sc-order" target="_blank">Order via WhatsApp →</a>
+    </div>
+    <div class="samagri-card">
+      <span class="sc-icon">🕯️</span>
+      <div class="sc-name">Incense &amp; Agarbatti</div>
+      <p class="sc-desc">Premium agarbatti, dhoop sticks, sambrani, and natural incense cones in a wide range of sacred fragrances.</p>
+      <a href="https://wa.me/917980528095?text=Hi! I'd like to order Incense or Agarbatti" class="sc-order" target="_blank">Order via WhatsApp →</a>
+    </div>
+    <div class="samagri-card">
+      <span class="sc-icon">📦</span>
+      <div class="sc-name">Complete Puja Kits</div>
+      <p class="sc-desc">All-inclusive kits for Satyanarayan Puja, Griha Pravesh, Navratri, Janmashtami, and all major rituals.</p>
+      <a href="https://wa.me/917980528095?text=Hi! I'd like to order a Complete Puja Kit" class="sc-order" target="_blank">Order via WhatsApp →</a>
+    </div>
+    <div class="samagri-card">
+      <span class="sc-icon">🫙</span>
+      <div class="sc-name">Til Tel &amp; Camphor</div>
+      <p class="sc-desc">Pure sesame oil (til tel), kapur, dhoop, and other essential puja oils and aromatic offerings.</p>
+      <a href="https://wa.me/917980528095?text=Hi! I'd like to order Til Tel or Camphor" class="sc-order" target="_blank">Order via WhatsApp →</a>
+    </div>
+    <div class="samagri-card">
+      <span class="sc-icon">🪆</span>
+      <div class="sc-name">Idols &amp; Murtis</div>
+      <p class="sc-desc">Beautiful brass, marble, and clay idols of Radha-Krishna, Ganesha, Lakshmi, Durga, and more.</p>
+      <a href="https://wa.me/917980528095?text=Hi! I'd like to order an Idol or Murti" class="sc-order" target="_blank">Order via WhatsApp →</a>
+    </div>
+    <div class="samagri-card">
+      <span class="sc-icon">📖</span>
+      <div class="sc-name">Puja Books &amp; Calendars</div>
+      <p class="sc-desc">Panchang, Hindu calendars, puja vidhi books, stotra collections, and religious texts for home and temple use.</p>
+      <a href="https://wa.me/917980528095?text=Hi! I'd like to order Puja Books or Calendars" class="sc-order" target="_blank">Order via WhatsApp →</a>
+    </div>
+  </div>
+</section>
+
+<!-- HERITAGE -->
+<div class="heritage" id="heritage">
+  <div>
+    <div class="heritage-eyebrow">Our Offline Heritage</div>
+    <div class="heritage-name">Paul &amp; Co</div>
+    <p class="heritage-desc">A trusted name in puja samagri for generations. Our physical store has served devotees with authenticity and care — and now we're bringing that same trust to your doorstep through Sree Krishna Puja Dukan online.</p>
+  </div>
+  <div class="heritage-divider"></div>
+  <div>
+    <div class="heritage-eyebrow">Online Collections</div>
+    <div class="heritage-name">Sree Krishna Collections</div>
+    <p class="heritage-desc">Beyond samagri, we curate beautiful traditional outfits for Gopal (bal Krishna) — lovingly handpicked to dress your deity for every season, festival, and occasion throughout the year.</p>
+  </div>
+</div>
+
+<!-- GOPAL COLLECTION -->
+<section class="gopal-section" id="gopal">
+  <div class="sec-label">Sree Krishna Collections</div>
+  <h2 class="sec-title">Dress your <em>Gopal</em> with love</h2>
+  <p style="font-size:14px; line-height:1.9; color:var(--text-muted); max-width:520px; margin-top:-30px;">Handpicked outfits for your Bal Gopal idol — for daily darshan, festivals, and every special occasion in the devotional calendar.</p>
+  <div class="gopal-grid reveal" style="margin-top:48px;">
+    <div class="gopal-card">
+      <div class="gopal-img">👘</div>
+      <div class="gopal-info">
+        <div class="gopal-name">Festival Collection</div>
+        <div class="gopal-sub">Janmashtami · Holi · Diwali</div>
+        <a href="https://wa.me/917980528095?text=Hi! I'd like to see the Festival Gopal Collection" class="gopal-btn" target="_blank">Enquire →</a>
+      </div>
+    </div>
+    <div class="gopal-card">
+      <div class="gopal-img">🧣</div>
+      <div class="gopal-info">
+        <div class="gopal-name">Daily Wear</div>
+        <div class="gopal-sub">Simple · Comfortable · Devotional</div>
+        <a href="https://wa.me/917980528095?text=Hi! I'd like to see Daily Wear Gopal outfits" class="gopal-btn" target="_blank">Enquire →</a>
+      </div>
+    </div>
+    <div class="gopal-card">
+      <div class="gopal-img">👑</div>
+      <div class="gopal-info">
+        <div class="gopal-name">Royal &amp; Silk</div>
+        <div class="gopal-sub">Silk · Zari · Premium fabrics</div>
+        <a href="https://wa.me/917980528095?text=Hi! I'd like to see Royal Gopal outfits" class="gopal-btn" target="_blank">Enquire →</a>
+      </div>
+    </div>
+    <div class="gopal-card">
+      <div class="gopal-img">🌸</div>
+      <div class="gopal-info">
+        <div class="gopal-name">Seasonal Sets</div>
+        <div class="gopal-sub">Winter · Summer · Monsoon</div>
+        <a href="https://wa.me/917980528095?text=Hi! I'd like to see Seasonal Gopal sets" class="gopal-btn" target="_blank">Enquire →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW TO ORDER -->
+<section class="sec" id="order" style="background:var(--bg-2);">
+  <div class="sec-label">How to Order</div>
+  <h2 class="sec-title">Simple as a <em>prayer</em></h2>
+  <div class="steps-grid reveal">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-title">Browse &amp; Choose</div>
+      <p class="step-desc">Browse our samagri or Gopal collections and note what you'd like to order.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-title">WhatsApp Us</div>
+      <p class="step-desc">Send us a message on WhatsApp with your items — we'll confirm availability instantly.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-title">Confirm &amp; Pay</div>
+      <p class="step-desc">We'll share the total. Pay easily via UPI, bank transfer, or cash on delivery for local orders.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-title">Delivered to You</div>
+      <p class="step-desc">Your sacred items are carefully packed and delivered to your home with love and care.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WA CTA -->
+<div class="wa-cta reveal" id="contact">
+  <div>
+    <div class="wa-title">Ready to order? <em>We're just a message away.</em></div>
+    <p class="wa-desc">WhatsApp us and we'll respond within minutes. No app downloads, no complicated checkout — just a simple, personal conversation.</p>
+  </div>
+  <a href="https://wa.me/917980528095" class="wa-btn" target="_blank">💬 Chat on WhatsApp</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand-name">Sree Krishna Puja Dukan</div>
+      <div class="footer-brand-heritage">Paul &amp; Co · Heritage Shop</div>
+      <p class="footer-tagline">Bringing pure puja samagri and devotional collections to homes. A heritage shop, a family's love for the divine.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Samagri</h4>
+      <ul>
+        <li>Diyas &amp; Lamps</li>
+        <li>Incense &amp; Agarbatti</li>
+        <li>Til Tel &amp; Camphor</li>
+        <li>Complete Puja Kits</li>
+        <li>Idols &amp; Murtis</li>
+        <li>Puja Books</li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Collections</h4>
+      <ul>
+        <li>Festival Gopal Wear</li>
+        <li>Daily Gopal Wear</li>
+        <li>Royal &amp; Silk</li>
+        <li>Seasonal Sets</li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li>WhatsApp Orders</li>
+        <li>Paul &amp; Co Offline Shop</li>
+        <li>Sree Krishna Collections</li>
+        <li>Delivery Info</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2024 Sree Krishna Puja Dukan · Paul &amp; Co. All rights reserved.</p>
+    <span class="footer-om">ॐ</span>
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
