@@ -193,6 +193,11 @@
   .reveal { opacity:0; transform:translateY(28px); transition:opacity 0.75s ease, transform 0.75s ease; }
   .reveal.visible { opacity:1; transform:translateY(0); }
 
+  /* CHUNRI GRID */
+  .chunri-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:24px; max-width:800px; }
+
+  @media (max-width: 768px) { .chunri-grid { grid-template-columns:1fr; } }
+
   /* HAMBURGER MENU */
   .hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; padding:4px; background:none; border:none; }
   .hamburger span { display:block; width:24px; height:2px; background:var(--saffron); transition:all 0.3s; }
@@ -259,6 +264,7 @@
   </div>
   <ul class="nav-links">
     <li><a href="#samagri">Samagri</a></li>
+    <li><a href="#chunri">Chunri</a></li>
     <li><a href="#gopal">Gopal Collection</a></li>
     <li><a href="#order">How to Order</a></li>
     <li><a href="#heritage">About Us</a></li>
@@ -274,6 +280,7 @@
 <div class="mobile-menu" id="mobileMenu">
   <button class="mobile-menu-close" onclick="document.getElementById('mobileMenu').classList.remove('open')">✕</button>
   <a href="#samagri" onclick="document.getElementById('mobileMenu').classList.remove('open')">Samagri</a>
+  <a href="#chunri" onclick="document.getElementById('mobileMenu').classList.remove('open')">Chunri</a>
   <a href="#gopal" onclick="document.getElementById('mobileMenu').classList.remove('open')">Gopal Collection</a>
   <a href="#order" onclick="document.getElementById('mobileMenu').classList.remove('open')">How to Order</a>
   <a href="#heritage" onclick="document.getElementById('mobileMenu').classList.remove('open')">About Us</a>
@@ -458,6 +465,53 @@
   </div>
 </section>
 
+<!-- CHUNRI SECTION -->
+<section class="sec" id="chunri" style="background:var(--bg-2);">
+  <div class="sec-label">Sree Krishna Collections</div>
+  <h2 class="sec-title">Chunri for <em>Mata Rani</em></h2>
+  <p style="font-size:14px;line-height:1.9;color:var(--text-muted);max-width:520px;margin-top:-30px;margin-bottom:48px;">Lovingly crafted chunris in vibrant colours — offered with devotion to Mata Rani for every occasion and festival.</p>
+
+  <div class="chunri-grid reveal">
+
+    <!-- RED CHUNRI -->
+    <div class="product-card">
+      <div class="card-gallery">
+        <img class="card-main-img" id="main-chunri-red" src="chunrired1.jpg" alt="Red Chunri">
+        <div class="card-thumbnails">
+          <img class="card-thumb active" src="chunrired1.jpg" onclick="switchImg('main-chunri-red','chunrired1.jpg',this)" alt="">
+          <img class="card-thumb" src="chunrired2.jpg" onclick="switchImg('main-chunri-red','chunrired2.jpg',this)" alt="">
+        </div>
+      </div>
+      <div class="card-info">
+        <div class="card-name">Red Chunri</div>
+        <p class="card-desc">Auspicious red chunri — offered to Mata Rani during Navratri, Durga Puja, and all special occasions of devotion.</p>
+        <div class="card-footer">
+          <a href="https://wa.me/917980528095?text=Hi! I'd like to order a Red Chunri" class="card-order" target="_blank">Order via WhatsApp</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- YELLOW CHUNRI -->
+    <div class="product-card">
+      <div class="card-gallery">
+        <img class="card-main-img" id="main-chunri-yellow" src="chunriyellow1.jpg" alt="Yellow Chunri">
+        <div class="card-thumbnails">
+          <img class="card-thumb active" src="chunriyellow1.jpg" onclick="switchImg('main-chunri-yellow','chunriyellow1.jpg',this)" alt="">
+          <img class="card-thumb" src="chunriyellow2.jpg" onclick="switchImg('main-chunri-yellow','chunriyellow2.jpg',this)" alt="">
+        </div>
+      </div>
+      <div class="card-info">
+        <div class="card-name">Yellow Chunri</div>
+        <p class="card-desc">Bright yellow chunri — a symbol of prosperity and divine blessings, ideal for Vasant Panchami and festive pujas.</p>
+        <div class="card-footer">
+          <a href="https://wa.me/917980528095?text=Hi! I'd like to order a Yellow Chunri" class="card-order" target="_blank">Order via WhatsApp</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
 <!-- HERITAGE -->
 <div class="heritage" id="heritage">
   <div>
@@ -621,6 +675,13 @@
         <li>Jewellery &amp; Accessories</li>
         <li>Festival Collection</li>
         <li>Royal &amp; Silk</li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Chunri</h4>
+      <ul>
+        <li>Red Chunri</li>
+        <li>Yellow Chunri</li>
       </ul>
     </div>
     <div class="footer-col">
